@@ -29,5 +29,15 @@ namespace RentVDB.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<RentVDB.Models.Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<RentVDB.Models.MembershipType> MembershipTypes { get; set; }
+
+        public System.Data.Entity.DbSet<RentVDB.Models.MovieFormViewModel> MovieFormViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<RentVDB.Models.Rental> Rentals { get; set; }
+
+        public System.Data.Entity.DbSet<RentVDB.Models.Genre> Genres { get; set; }
     }
 }
