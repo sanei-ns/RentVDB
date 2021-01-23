@@ -17,6 +17,6 @@ namespace RentVDB.Models
 
         public static readonly byte Unknown = 0;
         public static readonly byte PayAsYouGo = 1;
-        public static readonly byte PayAsYouGo = 1;
+        
     }
 }
