@@ -10,7 +10,6 @@ namespace RentVDB.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "RentVDB.Models.ApplicationDbContext";
         }
 
         protected override void Seed(RentVDB.Models.ApplicationDbContext context)

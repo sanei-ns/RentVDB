@@ -21,7 +21,7 @@ namespace RentVDB.Controllers
         }
 
         // GET: Genres/Details/5
-        public ActionResult Details(byte? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -59,7 +59,7 @@ namespace RentVDB.Controllers
         }
 
         // GET: Genres/Edit/5
-        public ActionResult Edit(byte? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -90,7 +90,7 @@ namespace RentVDB.Controllers
         }
 
         // GET: Genres/Delete/5
-        public ActionResult Delete(byte? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace RentVDB.Controllers
         // POST: Genres/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(byte id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Genre genre = db.Genres.Find(id);
             db.Genres.Remove(genre);

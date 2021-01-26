@@ -14,7 +14,7 @@ namespace RentVDB.Models
             Name = movie.Name;
             ReleaseDate = movie.ReleaseDate;
             NumberInStock = movie.NumberInStock;
-            GenreId = movie.GenreId;
+            Genre = movie.Genre;
         }
         public IEnumerable<Genre> Genres { get; set; }
 
@@ -26,7 +26,7 @@ namespace RentVDB.Models
 
         [Display(Name = "Genre")]
         [Required]
-        public byte? GenreId { get; set; }
+        public Genre Genre { get; set; }
 
         [Display(Name = "Release Date")]
         [Required]
@@ -35,7 +35,7 @@ namespace RentVDB.Models
         [Display(Name = "Number in Stock")]
         [Range(1, 20)]
         [Required]
-        public byte? NumberInStock { get; set; }
+        public int? NumberInStock { get; set; }
 
         public string Title
         {

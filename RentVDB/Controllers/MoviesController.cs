@@ -10,107 +10,107 @@ using RentVDB.Models;
 
 namespace RentVDB.Controllers
 {
-    public class MovieFormViewModelsController : Controller
+    public class MoviesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: MovieFormViewModels
+        // GET: Movies
         public ActionResult Index()
         {
-            return View(db.MovieFormViewModels.ToList());
+            return View(db.Movies.ToList());
         }
 
-        // GET: MovieFormViewModels/Details/5
+        // GET: Movies/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MovieFormViewModel movieFormViewModel = db.MovieFormViewModels.Find(id);
-            if (movieFormViewModel == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(movieFormViewModel);
+            return View(movie);
         }
 
-        // GET: MovieFormViewModels/Create
+        // GET: Movies/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MovieFormViewModels/Create
+        // POST: Movies/Create
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,GenreId,ReleaseDate,NumberInStock")] MovieFormViewModel movieFormViewModel)
+        public ActionResult Create([Bind(Include = "Id,Name,DateAdded,ReleaseDate,NumberInStock,NumberAvailable")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.MovieFormViewModels.Add(movieFormViewModel);
+                db.Movies.Add(movie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(movieFormViewModel);
+            return View(movie);
         }
 
-        // GET: MovieFormViewModels/Edit/5
+        // GET: Movies/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MovieFormViewModel movieFormViewModel = db.MovieFormViewModels.Find(id);
-            if (movieFormViewModel == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(movieFormViewModel);
+            return View(movie);
         }
 
-        // POST: MovieFormViewModels/Edit/5
+        // POST: Movies/Edit/5
         // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
         // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,GenreId,ReleaseDate,NumberInStock")] MovieFormViewModel movieFormViewModel)
+        public ActionResult Edit([Bind(Include = "Id,Name,DateAdded,ReleaseDate,NumberInStock,NumberAvailable")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movieFormViewModel).State = EntityState.Modified;
+                db.Entry(movie).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movieFormViewModel);
+            return View(movie);
         }
 
-        // GET: MovieFormViewModels/Delete/5
+        // GET: Movies/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MovieFormViewModel movieFormViewModel = db.MovieFormViewModels.Find(id);
-            if (movieFormViewModel == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(movieFormViewModel);
+            return View(movie);
         }
 
-        // POST: MovieFormViewModels/Delete/5
+        // POST: Movies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MovieFormViewModel movieFormViewModel = db.MovieFormViewModels.Find(id);
-            db.MovieFormViewModels.Remove(movieFormViewModel);
+            Movie movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

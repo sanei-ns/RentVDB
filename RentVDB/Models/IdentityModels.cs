@@ -39,5 +39,7 @@ namespace RentVDB.Models
         public System.Data.Entity.DbSet<RentVDB.Models.Rental> Rentals { get; set; }
 
         public System.Data.Entity.DbSet<RentVDB.Models.Genre> Genres { get; set; }
+
+        public System.Data.Entity.DbSet<RentVDB.Models.Movie> Movies { get; set; }
     }
 }

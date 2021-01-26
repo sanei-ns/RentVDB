@@ -7,13 +7,13 @@ namespace RentVDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class daliMigration11 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(daliMigration11));
         
         string IMigrationMetadata.Id
         {
-            get { return "202101231429052_InitialCreate"; }
+            get { return "202101240020388_daliMigration11"; }
         }
         
         string IMigrationMetadata.Source
