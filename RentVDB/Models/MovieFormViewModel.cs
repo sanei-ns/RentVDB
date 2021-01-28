@@ -8,7 +8,7 @@ namespace RentVDB.Models
 {
     public class MovieFormViewModel
     {
-        public MovieFormViewModel(Movie movie)
+        public MovieFormViewModel(MovieMay movie)
         {
             Id = movie.Id;
             Name = movie.Name;
@@ -37,13 +37,8 @@ namespace RentVDB.Models
         [Required]
         public int? NumberInStock { get; set; }
 
-        public string Title
-        {
-            get
-            {
-                return Id != 0 ? "Edit Movie" : "New Movie";
-            }
-        }
+        public string Title => Id != 0 ? "Edit Movie" : "New Movie";
+
         public MovieFormViewModel()
         {
             Id = 0;

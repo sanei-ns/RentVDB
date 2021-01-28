@@ -6,14 +6,14 @@ namespace RentVDB.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initialfazet : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class MoviesModified : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initialfazet));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MoviesModified));
         
         string IMigrationMetadata.Id
         {
-            get { return "202101232341312_Initialfazet"; }
+            get { return "202101261708055_MoviesModified"; }
         }
         
         string IMigrationMetadata.Source

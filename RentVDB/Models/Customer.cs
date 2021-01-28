@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.OData.Edm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace RentVDB.Models
 
         [Display(Name = "Date of Birth")]
         [Min18YearsIfAMember]
+        
         public DateTime? Birthdate { get; set; }
     }
 }

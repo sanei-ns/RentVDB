@@ -3,7 +3,7 @@ namespace RentVDB.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initialfazet : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -48,11 +48,29 @@ namespace RentVDB.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 255),
-                        GenreId = c.Int(nullable: false),
                         ReleaseDate = c.DateTime(nullable: false),
                         NumberInStock = c.Int(nullable: false),
+                        Genre_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Genres", t => t.Genre_Id, cascadeDelete: true)
+                .Index(t => t.Genre_Id);
+            
+            CreateTable(
+                "dbo.Movies",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 255),
+                        DateAdded = c.DateTime(nullable: false),
+                        ReleaseDate = c.DateTime(nullable: false),
+                        NumberInStock = c.Int(nullable: false),
+                        NumberAvailable = c.Int(nullable: false),
+                        Genre_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Genres", t => t.Genre_Id, cascadeDelete: true)
+                .Index(t => t.Genre_Id);
             
             CreateTable(
                 "dbo.Rentals",
@@ -69,22 +87,6 @@ namespace RentVDB.Migrations
                 .ForeignKey("dbo.Movies", t => t.Movie_Id, cascadeDelete: true)
                 .Index(t => t.Customer_Id)
                 .Index(t => t.Movie_Id);
-            
-            CreateTable(
-                "dbo.Movies",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 255),
-                        GenreId = c.Int(nullable: false),
-                        DateAdded = c.DateTime(nullable: false),
-                        ReleaseDate = c.DateTime(nullable: false),
-                        NumberInStock = c.Int(nullable: false),
-                        NumberAvailable = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Genres", t => t.GenreId, cascadeDelete: true)
-                .Index(t => t.GenreId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -163,8 +165,9 @@ namespace RentVDB.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Rentals", "Movie_Id", "dbo.Movies");
-            DropForeignKey("dbo.Movies", "GenreId", "dbo.Genres");
             DropForeignKey("dbo.Rentals", "Customer_Id", "dbo.Customers");
+            DropForeignKey("dbo.Movies", "Genre_Id", "dbo.Genres");
+            DropForeignKey("dbo.MovieFormViewModels", "Genre_Id", "dbo.Genres");
             DropForeignKey("dbo.Customers", "MembershipTypeId", "dbo.MembershipTypes");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -172,17 +175,18 @@ namespace RentVDB.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Movies", new[] { "GenreId" });
             DropIndex("dbo.Rentals", new[] { "Movie_Id" });
             DropIndex("dbo.Rentals", new[] { "Customer_Id" });
+            DropIndex("dbo.Movies", new[] { "Genre_Id" });
+            DropIndex("dbo.MovieFormViewModels", new[] { "Genre_Id" });
             DropIndex("dbo.Customers", new[] { "MembershipTypeId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Movies");
             DropTable("dbo.Rentals");
+            DropTable("dbo.Movies");
             DropTable("dbo.MovieFormViewModels");
             DropTable("dbo.Genres");
             DropTable("dbo.MembershipTypes");

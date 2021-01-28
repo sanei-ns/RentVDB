@@ -3,7 +3,7 @@ namespace RentVDB.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class daliMigration11 : DbMigration
+    public partial class MovieMayEntity : DbMigration
     {
         public override void Up()
         {

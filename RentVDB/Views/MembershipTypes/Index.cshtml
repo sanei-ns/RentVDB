@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RentVDB.Models.Movie>
+﻿@model IEnumerable<RentVDB.Models.MembershipType>
 
 @{
     ViewBag.Title = "Index";
@@ -15,16 +15,13 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateAdded)
+            @Html.DisplayNameFor(model => model.SignUpFee)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.DisplayNameFor(model => model.DurationInMonths)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumberInStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberAvailable)
+            @Html.DisplayNameFor(model => model.DiscountRate)
         </th>
         <th></th>
     </tr>
@@ -35,16 +32,13 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateAdded)
+            @Html.DisplayFor(modelItem => item.SignUpFee)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
+            @Html.DisplayFor(modelItem => item.DurationInMonths)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumberInStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberAvailable)
+            @Html.DisplayFor(modelItem => item.DiscountRate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
