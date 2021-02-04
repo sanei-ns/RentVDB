@@ -24,9 +24,10 @@ namespace RentVDB.Models
         public int NumberInStock { get; set; }
 
         public int NumberAvailable { get; set; }
+      /*
         public int? ImageId { get; set; }
         [Display(Name = "Image")]
-        public ImageMv Image { get; set; }
+        public ImageMv Image { get; set; }*/
     }
 
 }

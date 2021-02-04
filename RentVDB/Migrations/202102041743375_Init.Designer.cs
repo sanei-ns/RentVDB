@@ -7,13 +7,13 @@ namespace RentVDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class MovieMayEntityGenreId : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MovieMayEntityGenreId));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202101261723114_MovieMayEntityGenreId"; }
+            get { return "202102041743375_Init"; }
         }
         
         string IMigrationMetadata.Source

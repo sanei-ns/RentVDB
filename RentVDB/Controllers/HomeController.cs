@@ -1,16 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using RentVDB.Models;
 
 namespace RentVDB.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var movies = db.MovieMays.Include(m => m.Genre);
+            ViewData["movies"] = movies;
+            if(movies != null)
+                return View();
+            return null;
         }
 
         public ActionResult About()
@@ -26,5 +36,7 @@ namespace RentVDB.Controllers
 
             return View();
         }
+
+
     }
 }

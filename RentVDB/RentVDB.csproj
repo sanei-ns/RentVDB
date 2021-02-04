@@ -239,53 +239,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MembershipTypesController.cs" />
+    <Compile Include="Controllers\MovieMaysController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101261653123_init.cs" />
-    <Compile Include="Migrations\202101261653123_init.Designer.cs">
-      <DependentUpon>202101261653123_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101261708055_MoviesModified.cs" />
-    <Compile Include="Migrations\202101261708055_MoviesModified.Designer.cs">
-      <DependentUpon>202101261708055_MoviesModified.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101261716423_MovieMayEntity.cs" />
-    <Compile Include="Migrations\202101261716423_MovieMayEntity.Designer.cs">
-      <DependentUpon>202101261716423_MovieMayEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101261723114_MovieMayEntityGenreId.cs" />
-    <Compile Include="Migrations\202101261723114_MovieMayEntityGenreId.Designer.cs">
-      <DependentUpon>202101261723114_MovieMayEntityGenreId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101261741493_Rental.cs" />
-    <Compile Include="Migrations\202101261741493_Rental.Designer.cs">
-      <DependentUpon>202101261741493_Rental.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101271427578_image.cs" />
-    <Compile Include="Migrations\202101271427578_image.Designer.cs">
-      <DependentUpon>202101271427578_image.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101272125050_newcustomer.cs" />
-    <Compile Include="Migrations\202101272125050_newcustomer.Designer.cs">
-      <DependentUpon>202101272125050_newcustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101272126515_updateMovieMay.cs" />
-    <Compile Include="Migrations\202101272126515_updateMovieMay.Designer.cs">
-      <DependentUpon>202101272126515_updateMovieMay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101272201528_reintiqliwe.cs" />
-    <Compile Include="Migrations\202101272201528_reintiqliwe.Designer.cs">
-      <DependentUpon>202101272201528_reintiqliwe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101272349314_reinitializing.cs" />
-    <Compile Include="Migrations\202101272349314_reinitializing.Designer.cs">
-      <DependentUpon>202101272349314_reinitializing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202101280043328_add_image.cs" />
-    <Compile Include="Migrations\202101280043328_add_image.Designer.cs">
-      <DependentUpon>202101280043328_add_image.cs</DependentUpon>
+    <Compile Include="Migrations\202102041743375_Init.cs" />
+    <Compile Include="Migrations\202102041743375_Init.Designer.cs">
+      <DependentUpon>202102041743375_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -376,6 +337,11 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\MovieMays\Create.cshtml" />
+    <Content Include="Views\MovieMays\Delete.cshtml" />
+    <Content Include="Views\MovieMays\Details.cshtml" />
+    <Content Include="Views\MovieMays\Edit.cshtml" />
+    <Content Include="Views\MovieMays\Index.cshtml" />
     <Content Include="Views\Rentals\Create.cshtml" />
     <Content Include="Views\Rentals\Delete.cshtml" />
     <Content Include="Views\Rentals\Details.cshtml" />
@@ -385,7 +351,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="fonts\Image\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -405,38 +370,8 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101261653123_init.resx">
-      <DependentUpon>202101261653123_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101261708055_MoviesModified.resx">
-      <DependentUpon>202101261708055_MoviesModified.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101261716423_MovieMayEntity.resx">
-      <DependentUpon>202101261716423_MovieMayEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101261723114_MovieMayEntityGenreId.resx">
-      <DependentUpon>202101261723114_MovieMayEntityGenreId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101261741493_Rental.resx">
-      <DependentUpon>202101261741493_Rental.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101271427578_image.resx">
-      <DependentUpon>202101271427578_image.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101272125050_newcustomer.resx">
-      <DependentUpon>202101272125050_newcustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101272126515_updateMovieMay.resx">
-      <DependentUpon>202101272126515_updateMovieMay.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101272201528_reintiqliwe.resx">
-      <DependentUpon>202101272201528_reintiqliwe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101272349314_reinitializing.resx">
-      <DependentUpon>202101272349314_reinitializing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101280043328_add_image.resx">
-      <DependentUpon>202101280043328_add_image.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102041743375_Init.resx">
+      <DependentUpon>202102041743375_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

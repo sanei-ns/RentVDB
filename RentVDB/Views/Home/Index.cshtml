@@ -1,12 +1,66 @@
-﻿@{
+﻿@using RentVDB.Models
+@{
     ViewBag.Title = "Home Page";
+    IEnumerable<MovieMay> Model = ViewData["movies"] as IEnumerable<RentVDB.Models.MovieMay>;
 }
 
 <div class="jumbotron">
     <h1>Movie Rental</h1>
     <p class="lead">Choose the movie you want to rent.</p>
-    <p><a href="https://localhost:44315/moviemays" class="btn btn-primary btn-lg">Select Your MOVIE &raquo;</a></p>
+    <p><a href="#" class="btn btn-primary btn-lg">Select Your MOVIE &raquo;</a></p>
+    <table class="table">
+        <tr>
+            <th>
+                Genre
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                 Release Date
+            </th>
+            <th>
+                 Number Available
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberAvailable)
+                </td>
+                @if (item.NumberAvailable > 0)
+                {
+                <td>
+
+                     <a class="btn btn-primary btn-lg" href="Rentals/Create">Rent</a>
+                </td>
+                }
+                @if (item.NumberAvailable == 0)
+                {
+                <td data-disabled="true">
+                    
+                    <button class="btn btn-primary btn-lg" onclick="alert('Unavailiable');" >Rent</button>
+
+                </td>
+                }
+            </tr>
+        }
+
+    </table>
+
+
 </div>
 <table class="table">
-
 </table>

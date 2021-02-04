@@ -20,6 +20,13 @@ namespace RentVDB.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        private DbSet<Customer> _customers;
+        private DbSet<MembershipType> _membershipTypes;
+        private DbSet<Rental> _rentals;
+        private DbSet<Genre> _genres;
+        private DbSet<MovieMay> _movieMays;
+        private DbSet<MovieFormViewModel> _movieFormViewModels;
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -30,17 +37,41 @@ namespace RentVDB.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<RentVDB.Models.Customer> Customers { get; set; }
+        public System.Data.Entity.DbSet<RentVDB.Models.Customer> Customers
+        {
+            get => _customers;
+            set => _customers = value;
+        }
 
-        public System.Data.Entity.DbSet<RentVDB.Models.MembershipType> MembershipTypes { get; set; }
+        public System.Data.Entity.DbSet<RentVDB.Models.MembershipType> MembershipTypes
+        {
+            get => _membershipTypes;
+            set => _membershipTypes = value;
+        }
 
-        
-        public System.Data.Entity.DbSet<RentVDB.Models.Rental> Rentals { get; set; }
 
-        public System.Data.Entity.DbSet<RentVDB.Models.Genre> Genres { get; set; }
+        public System.Data.Entity.DbSet<RentVDB.Models.Rental> Rentals
+        {
+            get => _rentals;
+            set => _rentals = value;
+        }
 
-        public System.Data.Entity.DbSet<RentVDB.Models.MovieMay> MovieMays { get; set; }
+        public System.Data.Entity.DbSet<RentVDB.Models.Genre> Genres
+        {
+            get => _genres;
+            set => _genres = value;
+        }
 
-        public System.Data.Entity.DbSet<RentVDB.Models.MovieFormViewModel> MovieFormViewModels { get; set; }
+        public System.Data.Entity.DbSet<RentVDB.Models.MovieMay> MovieMays
+        {
+            get => _movieMays;
+            set => _movieMays = value;
+        }
+
+        public System.Data.Entity.DbSet<RentVDB.Models.MovieFormViewModel> MovieFormViewModels
+        {
+            get => _movieFormViewModels;
+            set => _movieFormViewModels = value;
+        }
     }
 }

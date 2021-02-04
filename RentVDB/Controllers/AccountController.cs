@@ -454,6 +454,10 @@ namespace RentVDB.Controllers
 
         internal class ChallengeResult : HttpUnauthorizedResult
         {
+            private string _loginProvider;
+            private string _redirectUri;
+            private string _userId;
+
             public ChallengeResult(string provider, string redirectUri)
                 : this(provider, redirectUri, null)
             {
@@ -466,9 +470,23 @@ namespace RentVDB.Controllers
                 UserId = userId;
             }
 
-            public string LoginProvider { get; set; }
-            public string RedirectUri { get; set; }
-            public string UserId { get; set; }
+            public string LoginProvider
+            {
+                get => _loginProvider;
+                set => _loginProvider = value;
+            }
+
+            public string RedirectUri
+            {
+                get => _redirectUri;
+                set => _redirectUri = value;
+            }
+
+            public string UserId
+            {
+                get => _userId;
+                set => _userId = value;
+            }
 
             public override void ExecuteResult(ControllerContext context)
             {

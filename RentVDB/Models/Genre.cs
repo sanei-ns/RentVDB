@@ -8,11 +8,21 @@ namespace RentVDB.Models
 {
     public class Genre
     {
-        
-        public int Id { get; set; }
+        private int _id;
+        private string _name;
+
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
 
         [Required]
         [StringLength(255)]
-        public string Name { get; set; }
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
     }
 }

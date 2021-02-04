@@ -7,7 +7,19 @@ namespace RentVDB.Models
 {
     public class CustomerFormViewModel
     {
-        public IEnumerable<MembershipType> MembershipTypes { get; set; }
-        public Customer Customer { get; set; }
+        private IEnumerable<MembershipType> _membershipTypes;
+        private Customer _customer;
+
+        public IEnumerable<MembershipType> MembershipTypes
+        {
+            get => _membershipTypes;
+            set => _membershipTypes = value;
+        }
+
+        public Customer Customer
+        {
+            get => _customer;
+            set => _customer = value;
+        }
     }
 }

@@ -11,117 +11,112 @@ using RentVDB.Models;
 
 namespace RentVDB.Controllers
 {
-    [Authorize]
-    public class RentalsController : Controller
+    public class MovieMaysController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Rentals
+        // GET: MovieMays
         public async Task<ActionResult> Index()
         {
-            var rentals = db.Rentals.Include(r => r.Customer).Include(r => r.Movie);
-            return View(await rentals.ToListAsync());
+            var movieMays = db.MovieMays.Include(m => m.Genre);
+            return View(await movieMays.ToListAsync());
         }
 
-        // GET: Rentals/Details/5
+        // GET: MovieMays/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rental rental = await db.Rentals.FindAsync(id);
-            if (rental == null)
+            MovieMay movieMay = await db.MovieMays.FindAsync(id);
+            if (movieMay == null)
             {
                 return HttpNotFound();
             }
-            return View(rental);
+            return View(movieMay);
         }
 
-        // GET: Rentals/Create
+        // GET: MovieMays/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
-            ViewBag.MovieId = new SelectList(db.MovieMays, "Id", "Name");
+            ViewBag.GenreId = new SelectList(db.Genres, "Id", "Name");
             return View();
         }
 
-        // POST: Rentals/Create
+        // POST: MovieMays/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,CustomerId,MovieId,DateRented,DateReturned")] Rental rental)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,GenreId,DateAdded,ReleaseDate,NumberInStock,NumberAvailable")] MovieMay movieMay)
         {
             if (ModelState.IsValid)
             {
-                db.Rentals.Add(rental);
+                db.MovieMays.Add(movieMay);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", rental.CustomerId);
-            ViewBag.MovieId = new SelectList(db.MovieMays, "Id", "Name", rental.MovieId);
-            return View(rental);
+            ViewBag.GenreId = new SelectList(db.Genres, "Id", "Name", movieMay.GenreId);
+            return View(movieMay);
         }
 
-        // GET: Rentals/Edit/5
+        // GET: MovieMays/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rental rental = await db.Rentals.FindAsync(id);
-            if (rental == null)
+            MovieMay movieMay = await db.MovieMays.FindAsync(id);
+            if (movieMay == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", rental.CustomerId);
-            ViewBag.MovieId = new SelectList(db.MovieMays, "Id", "Name", rental.MovieId);
-            return View(rental);
+            ViewBag.GenreId = new SelectList(db.Genres, "Id", "Name", movieMay.GenreId);
+            return View(movieMay);
         }
 
-        // POST: Rentals/Edit/5
+        // POST: MovieMays/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,CustomerId,MovieId,DateRented,DateReturned")] Rental rental)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,GenreId,DateAdded,ReleaseDate,NumberInStock,NumberAvailable")] MovieMay movieMay)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(rental).State = EntityState.Modified;
+                db.Entry(movieMay).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", rental.CustomerId);
-            ViewBag.MovieId = new SelectList(db.MovieMays, "Id", "Name", rental.MovieId);
-            return View(rental);
+            ViewBag.GenreId = new SelectList(db.Genres, "Id", "Name", movieMay.GenreId);
+            return View(movieMay);
         }
 
-        // GET: Rentals/Delete/5
+        // GET: MovieMays/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Rental rental = await db.Rentals.FindAsync(id);
-            if (rental == null)
+            MovieMay movieMay = await db.MovieMays.FindAsync(id);
+            if (movieMay == null)
             {
                 return HttpNotFound();
             }
-            return View(rental);
+            return View(movieMay);
         }
 
-        // POST: Rentals/Delete/5
+        // POST: MovieMays/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Rental rental = await db.Rentals.FindAsync(id);
-            db.Rentals.Remove(rental);
+            MovieMay movieMay = await db.MovieMays.FindAsync(id);
+            db.MovieMays.Remove(movieMay);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
